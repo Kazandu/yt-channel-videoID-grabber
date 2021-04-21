@@ -1,6 +1,6 @@
-printf "*************************************\n***Youtube Channel videoID grabber***\n*************by  Kazandu*************\n*************************************\n\n"
+printf "*************************************\n***Youtube Channel videoID grabber***\n*************************************\n*************by  Kazandu*************\n*************************************\n\n"
 APIKEY=$(cat "apikey.txt")
-if [ ! -z "$APIKEY" ]; then
+if [ $APIKEY != "REPLACEMEPLEASE" ]; then
     mkdir "$1"
     curl "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=UU${1}&key=${APIKEY}" > "$1/full1.txt"
     NEXTTOKEN=$(jq -r '.nextPageToken' $1/full1.txt)
@@ -16,5 +16,5 @@ if [ ! -z "$APIKEY" ]; then
         sed -n '/videoId/p' $f | sed 's/.$//' | tr -d " \t" | sed 's/"videoId":"/https:\/\/www.youtube.com\/watch?v=/g' >> $1_IDs.txt
     done
 else
-printf "No API-key set! Please replace the Placeholder in apikey.txt with your API-key from the Youtube Data API v3"
+printf "No API-key set! Please replace the Placeholder in apikey.txt with your API-key from the Youtube Data API v3\n"
 fi
