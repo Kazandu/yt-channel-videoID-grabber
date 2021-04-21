@@ -1,6 +1,6 @@
 printf "*************************************\n***Youtube Channel videoID grabber***\n*************by  Kazandu*************\n*************************************\n\n"
 APIKEYFILE=apikey.txt
-if [ -f $APIKEYFILE ]; then
+if test -f "$APIKEYFILE"; then
     APIKEY=$(cat "apikey.txt")
     mkdir "$1"
     curl "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=UU${1}&key=${APIKEY}" > "$1/full1.txt"
