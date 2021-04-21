@@ -1,6 +1,6 @@
 printf "*************************************\n***Youtube Channel videoID grabber***\n*************by  Kazandu*************\n*************************************\n\n"
 APIKEYFILE=apikey.txt
-if [ ! -f "$APIKEYFILE" ]; then
+if [ ! -f $APIKEYFILE ]; then
     printf "No API-key set! Please replace the Placeholder in apikey.txt with your API-key from the Youtube Data API v3"
     exit 1
 fi
